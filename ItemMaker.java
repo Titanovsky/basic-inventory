@@ -1,11 +1,11 @@
-import java.util.Map;
+import java.util.*; // thanks for Mark
 
 public class ItemMaker {
     public static final int DEFAULT_MAX_COUNT = Integer.MAX_VALUE;
     public static final String DEFAULT_HEADER = "Header";
     public static final String DEFAULT_DESCRIPTION = "No description.";
 
-    private static Map<String, ItemMaker> _itemClasses;
+    private static Map<String, ItemMaker> _itemClasses = new HashMap<String, ItemMaker>();
 
     private String _itemClass;
     private int _maxCount;

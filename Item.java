@@ -22,13 +22,23 @@ public class Item {
         return _hasModify;
     }
 
+    //? нужен ли такой самоповтор методов? Сделан он ради удобства
+    public String getHeader() {
+        return getItemClassInfo().getHeader();
+    }
+    public int getMaxCount() {
+        return getItemClassInfo().getMaxCount();
+    }
+    public String getDescription() {
+        return getItemClassInfo().getDescription();
+    }
+
     public void setCount(int count) {
         _count = count;
     }
-    public void add(Inventory inv) {
-        //todo
-    }
-    public void add(Slot slot) {
-        //todo
-    }
+    // public void add(Inventory inv) {
+    // }
+    // public void add(Slot slot) {
+    //     slot.setItem(this);
+    // }
 }

@@ -1,5 +1,5 @@
 public class Inventory {
-    public final static int ABS_MAX_SLOTS = 128; //? не уверен, что они должны быть здесь, а не в Slot
+    public final static int ABS_MAX_SLOTS = 16; //? не уверен, что они должны быть здесь, а не в Slot
     public final static int ABS_MIN_SLOTS = 0; //? не уверен, что они должны быть здесь, а не в Slot
 
     private Slot[] _slots = new Slot[ABS_MAX_SLOTS];
@@ -8,7 +8,7 @@ public class Inventory {
     Inventory(int slots) {
         _maxSlots = getValidMaxSlots(slots);
 
-        for (int i = 0; i < _maxSlots; i++) {
+        for (int i = 0; i < ABS_MAX_SLOTS; i++) {
             _slots[i] = new Slot();
         }
     }
@@ -24,11 +24,14 @@ public class Inventory {
         maxSlots = getValidMaxSlots(maxSlots);
 
         _maxSlots = maxSlots;
-        int maxArrayElements = ABS_MAX_SLOTS - 1;
-        if (_maxSlots == maxArrayElements) return;
+        if (_maxSlots == ABS_MAX_SLOTS) return;
 
-        for (int i = _maxSlots; i < maxArrayElements; i++) {
+        for (int i = _maxSlots; i < ABS_MAX_SLOTS; i++) {
             _slots[i] = new Slot();
         }
+    }
+
+    public void add(Item item) {
+        //todo для мякотки
     }
 }
