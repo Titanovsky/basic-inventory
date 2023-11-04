@@ -18,6 +18,11 @@ public class Slot {
         _isEmpty = false;
     }
 
+    public void remove() {
+        _isEmpty = true;
+        _item = null;
+    }
+
     public String toString() {
         String str = "";
 

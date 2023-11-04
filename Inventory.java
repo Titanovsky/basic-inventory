@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+
 public class Inventory {
     public final static int ABS_MAX_SLOTS = 16; //? не уверен, что они должны быть здесь, а не в Slot
     public final static int ABS_MIN_SLOTS = 0; //? не уверен, что они должны быть здесь, а не в Slot
@@ -18,7 +20,7 @@ public class Inventory {
     }
 
     public Slot[] getSlots() {return _slots;}
-    public Slot getSlot(int slot) {return _slots[slot];}
+    public Slot get(int slot) {return _slots[slot];}
 
     public void setMaxSlots(int maxSlots) {
         maxSlots = getValidMaxSlots(maxSlots);
@@ -31,7 +33,19 @@ public class Inventory {
         }
     }
 
-    public void add(Item item) {
-        //todo для мякотки
+    public void add(Item item, int slot) {
+        if (slot > _maxSlots) return;
+
+        get(slot).setItem(item);
+    }
+    public void remove(Item item) {
+        for (Slot slot : _slots) {
+            if (slot.isEmpty()) continue;
+            if (slot.getItem() != item) continue; // не используем equals, ибо оперируем областью памяти
+
+            slot.remove();
+            
+            return;
+        }
     }
 }

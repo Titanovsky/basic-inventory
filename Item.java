@@ -7,7 +7,18 @@ public class Item {
         if (!ItemMaker.has(itemClass)) return;
         if (count <= 0) return;
 
+        var itemClassInfo = ItemMaker.get(itemClass);
+        if (count > itemClassInfo.getMaxCount()) return;
+
         _count = count;
+
+        _itemClassInfo = itemClassInfo;
+    }
+
+    Item(String itemClass) {
+        if (!ItemMaker.has(itemClass)) return;
+
+        _count = 1;
 
         _itemClassInfo = ItemMaker.get(itemClass);
     }
